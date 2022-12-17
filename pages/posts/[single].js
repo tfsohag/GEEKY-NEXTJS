@@ -1,7 +1,7 @@
 import config from "@config/config.json";
 import PostSingle from "@layouts/PostSingle";
 import { getSinglePage } from "@lib/contentParser";
-import { parseMDX } from "@lib/utils/mdxParser";
+import parseMDX from "@lib/utils/mdxParser";
 const { blog_folder } = config.settings;
 
 // post single layout

@@ -1,6 +1,6 @@
 import Share from "@components/Share";
 import Base from "@layouts/Baseof";
-import { dateFormat } from "@lib/utils/dateFormat";
+import dateFormat from "@lib/utils/dateFormat";
 import { humanize, markdownify, slugify } from "@lib/utils/textConverter";
 import shortcodes from "@shortcodes/all";
 import { MDXRemote } from "next-mdx-remote";
