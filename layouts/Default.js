@@ -1,6 +1,6 @@
 import { markdownify } from "@lib/utils/textConverter";
+import shortcodes from "@shortcodes/all";
 import { MDXRemote } from "next-mdx-remote";
-import shortcodes from "./shortcodes/all";
 
 const Default = ({ data }) => {
   const { frontmatter, mdxContent } = data;

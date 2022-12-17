@@ -1,11 +1,11 @@
+import Share from "@components/Share";
+import Base from "@layouts/Baseof";
 import { dateFormat } from "@lib/utils/dateFormat";
 import { humanize, markdownify, slugify } from "@lib/utils/textConverter";
 import shortcodes from "@shortcodes/all";
 import { MDXRemote } from "next-mdx-remote";
 import Image from "next/image";
 import Link from "next/link";
-import Base from "./Baseof";
-import Share from "./components/Share";
 
 const PostSingle = ({ frontmatter, content, mdxContent, authors, slug }) => {
   let { description, title, date, image, categories, tags } = frontmatter;
