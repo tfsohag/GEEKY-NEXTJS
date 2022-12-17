@@ -18,7 +18,6 @@ const About = ({ data }) => {
               width={920}
               height={515}
               alt={title}
-              layout="responsive"
               className="rounded-lg"
             />
           </div>

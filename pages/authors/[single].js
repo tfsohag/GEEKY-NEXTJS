@@ -2,7 +2,7 @@ import AuthorSingle from "@layouts/AuthorSingle";
 import { getSinglePage } from "@lib/contentParser";
 import { parseMDX } from "@lib/utils/mdxParser";
 
-// post single layout
+// authors single layout
 const Article = ({ author, mdxContent }) => {
   const { frontmatter, content } = author[0];
 
@@ -15,7 +15,7 @@ const Article = ({ author, mdxContent }) => {
   );
 };
 
-// get post single slug
+// get authors single slug
 export const getStaticPaths = () => {
   const allSlug = getSinglePage("content/authors");
   const paths = allSlug.map((item) => ({
@@ -30,7 +30,7 @@ export const getStaticPaths = () => {
   };
 };
 
-// get post single content
+// get authors single content
 export const getStaticProps = async ({ params }) => {
   const { single } = params;
   const getAuthors = getSinglePage("content/authors");

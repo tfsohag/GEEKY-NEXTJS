@@ -38,7 +38,7 @@ const AuthorPagination = ({
 
 export default AuthorPagination;
 
-// get blog pagination slug
+// get authors pagination slug
 export const getStaticPaths = () => {
   const getAllSlug = getSinglePage("content/authors");
   const allSlug = getAllSlug.map((item) => item.slug);
@@ -60,7 +60,7 @@ export const getStaticPaths = () => {
   };
 };
 
-// get blog pagination content
+// get authors pagination content
 export const getStaticProps = async ({ params }) => {
   const currentPage = parseInt((params && params.slug) || 1);
   const { pagination } = config.settings;
