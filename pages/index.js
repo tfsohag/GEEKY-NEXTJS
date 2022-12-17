@@ -3,7 +3,7 @@ import Base from "@layouts/Baseof";
 import { getListPage, getSinglePage } from "@lib/contentParser";
 import { sortByDate } from "@lib/utils/sortFunctions";
 import { markdownify } from "@lib/utils/textConverter";
-import Posts from "@partials/Posts";
+import Post from "@partials/Post";
 const { blog_folder } = config.settings;
 
 const Home = ({ banner, posts, authors }) => {
@@ -15,7 +15,13 @@ const Home = ({ banner, posts, authors }) => {
       <div className="section">
         <div className="container">
           {markdownify(banner.title, "h1", "h2 mb-8 text-center")}
-          <Posts posts={sortPostByDate.slice(0, showPost)} authors={authors} />
+          <div className="row">
+            {sortPostByDate.slice(0, showPost).map((post, i) => (
+              <div key={`key-${i}`} className="col-12 mb-8 sm:col-6">
+                <Post post={post} authors={authors} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </Base>

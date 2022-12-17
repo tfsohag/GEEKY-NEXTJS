@@ -3,7 +3,7 @@ import Base from "@layouts/Baseof";
 import { getSinglePage } from "@lib/contentParser";
 import { getTaxonomy } from "@lib/taxonomyParser";
 import { slugify } from "@lib/utils/textConverter";
-import Posts from "@partials/Posts";
+import Post from "@partials/Post";
 const { blog_folder } = config.settings;
 
 // tag page
@@ -15,7 +15,13 @@ const Tag = ({ tag, posts, authors }) => {
           <h1 className="h2 mb-8 text-center">
             Showing posts from <span className="text-primary">{tag}</span> tag
           </h1>
-          <Posts posts={posts} authors={authors} />
+          <div className="row">
+            {posts.map((post, i) => (
+              <div key={`key-${i}`} className="col-12 mb-8 sm:col-6">
+                <Post post={post} authors={authors} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </Base>

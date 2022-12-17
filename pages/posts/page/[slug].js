@@ -3,7 +3,7 @@ import config from "@config/config.json";
 import Base from "@layouts/Baseof";
 import { getListPage, getSinglePage } from "@lib/contentParser";
 import { markdownify } from "@lib/utils/textConverter";
-import Posts from "@partials/Posts";
+import Post from "@partials/Post";
 const { blog_folder } = config.settings;
 
 // blog pagination
@@ -26,7 +26,13 @@ const BlogPagination = ({
       <section className="section">
         <div className="container">
           {markdownify(title, "h1", "h2 mb-8 text-center")}
-          <Posts posts={currentPosts} authors={authors} />
+          <div className="row">
+            {currentPosts.map((post, i) => (
+              <div key={`key-${i}`} className="col-12 mb-8 sm:col-6">
+                <Post post={post} authors={authors} />
+              </div>
+            ))}
+          </div>
           <Pagination
             section={blog_folder}
             totalPages={totalPages}

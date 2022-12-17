@@ -1,7 +1,7 @@
 import Base from "@layouts/Baseof";
-import Posts from "@layouts/partials/Posts";
 import { getSinglePage } from "@lib/contentParser";
 import { slugify } from "@lib/utils/textConverter";
+import Post from "@partials/Post";
 import { useSearchContext } from "context/state";
 import { useRouter } from "next/router";
 
@@ -40,7 +40,13 @@ const SearchPage = ({ authors }) => {
             Search results for <span className="text-primary">{query.key}</span>
           </h1>
           {searchResults.length > 0 ? (
-            <Posts posts={searchResults} authors={authors} />
+            <div className="row">
+              {searchResults.map((post, i) => (
+                <div key={`key-${i}`} className="col-12 mb-8 sm:col-6">
+                  <Post post={post} authors={authors} />
+                </div>
+              ))}
+            </div>
           ) : (
             <div className="py-24 text-center text-h3 shadow">
               No Search Found
