@@ -1,7 +1,7 @@
 {
   "name": "next-tailwind-boilerplate",
   "description": "a nextjs and tailwindcss boilerplate by themefisher.com",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
