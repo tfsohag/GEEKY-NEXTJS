@@ -1,18 +1,17 @@
-// navbar toggler
-input#nav-toggle:checked ~ label#show-button {
-  @apply hidden;
-}
 
-input#nav-toggle:checked ~ label#hide-button {
-  @apply flex md:hidden;
-}
-
-input#nav-toggle:checked ~ #nav-menu {
-  @apply block md:flex;
-}
 
 .header {
-  @apply sticky top-0 z-50 bg-white py-2 dark:bg-darkmode-theme-dark;
+  @apply top-0 z-50 bg-white py-8 border-b;
+
+  &-social {
+    @apply flex space-x-6 px-6 py-1 mx-3 border-l border-r items-center;
+    li {
+      @apply inline-flex;
+    }
+    a {
+      @apply inline-block text-dark hover:text-primary  p-2;
+    }
+  }
 }
 
 // navbar items
@@ -21,7 +20,7 @@ input#nav-toggle:checked ~ #nav-menu {
 }
 
 .navbar-brand {
-  @apply text-xl font-semibold text-dark dark:text-darkmode-light;
+  @apply text-xl font-semibold text-dark;
   image {
     @apply max-h-full max-w-full;
   }
@@ -31,12 +30,9 @@ input#nav-toggle:checked ~ #nav-menu {
   @apply text-center md:text-left;
 }
 
-.nav-item {
-  @apply mx-3;
-}
 
 .nav-link {
-  @apply p-3 text-lg font-semibold text-dark transition hover:text-primary dark:text-darkmode-light md:p-4;
+  @apply px-3 py-2.5 text-[13.5px] capitalize font-secondary font-semibold text-dark transition hover:text-white md:px-5 md:py-3 hover:bg-primary rounded-[30px];
 }
 
 .nav-dropdown {
@@ -44,7 +40,7 @@ input#nav-toggle:checked ~ #nav-menu {
 }
 
 .nav-dropdown-list {
-  @apply z-10 rounded-lg bg-white p-4 shadow dark:bg-darkmode-theme-dark;
+  @apply z-10 rounded-lg bg-white p-4 shadow;
 }
 
 .nav-dropdown-item {
@@ -52,15 +48,15 @@ input#nav-toggle:checked ~ #nav-menu {
 }
 
 .nav-dropdown-link {
-  @apply min-w-[150px] py-1 text-lg font-semibold text-dark transition hover:text-primary dark:text-darkmode-light dark:hover:text-primary;
+  @apply min-w-[150px] py-1 text-sm font-semibold text-dark transition hover:text-primary;
 }
 
 // search style
 .search-icon {
-  @apply cursor-pointer p-2 text-xl text-dark hover:text-primary dark:text-darkmode-light;
+  @apply cursor-pointer p-2.5 text-xl text-white bg-primary rounded-full;
 }
 .search-modal {
-  @apply invisible absolute top-0 left-0 right-0 z-10 h-10 bg-white opacity-0 transition dark:bg-theme-dark md:h-full;
+  @apply invisible absolute top-0 left-0 right-0 z-10 h-10 bg-white opacity-0 transition md:h-full;
   .form-input {
     @apply h-full w-full border-0 text-lg;
   }

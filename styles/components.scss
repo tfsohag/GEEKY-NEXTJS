@@ -5,7 +5,7 @@
 
 // container
 .container {
-  @apply mx-auto max-w-[1000px] px-4;
+  @apply mx-auto max-w-[1320px] px-4 lg:px-3;
 }
 
 // form style
@@ -46,7 +46,7 @@
   @apply prose-hr:border-border;
   @apply prose-p:text-lg prose-p:text-text;
   @apply prose-img:rounded-lg;
-  @apply prose-blockquote:border-primary prose-blockquote:bg-theme-light prose-blockquote:py-1 prose-blockquote:px-4;
+  @apply prose-blockquote:border-primary prose-blockquote:py-1 prose-blockquote:px-4;
   @apply prose-code:rounded-sm prose-code:border prose-code:border-border prose-code:px-1 prose-code:text-primary;
   @apply prose-strong:text-dark;
   @apply prose-a:text-primary;

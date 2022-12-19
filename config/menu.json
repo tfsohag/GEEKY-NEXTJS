@@ -9,10 +9,6 @@
       "url": "/about"
     },
     {
-      "name": "Posts",
-      "url": "/posts"
-    },
-    {
       "name": "Contact",
       "url": "/contact"
     },
@@ -22,20 +18,12 @@
       "hasChildren": true,
       "children": [
         {
-          "name": "Authors",
-          "url": "/authors"
-        },
-        {
           "name": "Categories",
           "url": "/categories"
         },
         {
           "name": "Tags",
           "url": "/tags"
-        },
-        {
-          "name": "Elements",
-          "url": "/elements"
         }
       ]
     }
