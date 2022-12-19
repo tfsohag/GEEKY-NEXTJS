@@ -1,10 +1,13 @@
+body.menu-open {
+  @apply overflow-hidden pr-0;
+}
 
 
 .header {
   @apply top-0 z-50 bg-white py-8 border-b;
 
   &-social {
-    @apply flex space-x-6 px-6 py-1 mx-3 border-l border-r items-center;
+    @apply flex space-x-3 2xl:space-x-6 px-6 py-1 mx-3 lg:border-x items-center lg:justify-start justify-center;
     li {
       @apply inline-flex;
     }
@@ -19,6 +22,10 @@
   @apply relative flex flex-wrap items-center justify-between;
 }
 
+.collapse-menu {
+  @apply fixed lg:static items-center lg:space-x-8 lg:flex max-w-[400px] lg:max-w-full bg-white right-0 h-[100vh] lg:h-auto top-0 w-full lg:w-auto z-10 border-l lg:border-l-0 p-6 lg:p-0 mx-0 transition-transform duration-300 ease-in-out; 
+}
+
 .navbar-brand {
   @apply text-xl font-semibold text-dark;
   image {
@@ -27,10 +34,12 @@
 }
 
 .navbar-nav {
-  @apply text-center md:text-left;
+  @apply mt-11 lg:mt-0;
 }
 
 .nav-item {
+  @apply mb-5 lg:mb-0 text-left;
+
   &.active {
     @apply bg-primary text-white;
   }
@@ -38,7 +47,7 @@
 
 
 .nav-link {
-  @apply px-3 py-2.5 text-[13.5px] capitalize font-secondary font-semibold text-dark transition hover:text-white md:px-5 md:py-3 hover:bg-primary rounded-[30px];
+  @apply px-6 py-2.5 text-[13.5px] capitalize font-secondary font-semibold text-dark transition hover:text-white md:px-5 md:py-3 hover:bg-primary rounded-[30px] text-left lg:text-center;
 
   &.active {
     @apply bg-primary text-white;
@@ -63,7 +72,7 @@
 
 // search style
 .search-icon {
-  @apply cursor-pointer p-2.5 text-xl text-white bg-primary rounded-full;
+  @apply inline-block cursor-pointer p-2.5 w-10 h-10 text-xl text-white bg-primary rounded-full;
 }
 .search-modal {
   @apply invisible absolute top-0 left-0 right-0 z-10 h-10 bg-white opacity-0 transition md:h-full;
