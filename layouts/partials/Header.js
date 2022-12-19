@@ -5,6 +5,7 @@ import socical from "@config/social.json";
 import Social from "@layouts/components/Social";
 import SearchModal from "@partials/SearchModal";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { IoSearch } from "react-icons/io5";
 
@@ -15,6 +16,10 @@ const Header = () => {
   // states declaration
   const [searchModal, setSearchModal] = useState(false);
   const { logo } = config.site;
+
+  // Router
+  const router = useRouter();
+  console.log(router);
 
   return (
     <>
@@ -32,8 +37,14 @@ const Header = () => {
               {main.map((menu, i) => (
                 <React.Fragment key={`menu-${i}`}>
                   {menu.hasChildren ? (
-                    <li className={`nav-item nav-dropdown group relative`}>
-                      <span className="nav-link inline-flex items-center">
+                    <li className="nav-item nav-dropdown group relative">
+                      <span
+                        className={`nav-link ${
+                          menu.children
+                            .map((c) => c.url)
+                            .includes(router.asPath) && "active"
+                        } inline-flex items-center`}
+                      >
                         {menu.name}
                         <svg
                           className="h-4 w-4 fill-current"
@@ -60,7 +71,12 @@ const Header = () => {
                     </li>
                   ) : (
                     <li className="nav-item">
-                      <Link href={menu.url} className="nav-link block">
+                      <Link
+                        href={menu.url}
+                        className={`nav-link block ${
+                          router.asPath === menu.url && "active"
+                        }`}
+                      >
                         {menu.name}
                       </Link>
                     </li>
