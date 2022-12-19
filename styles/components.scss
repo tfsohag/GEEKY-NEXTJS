@@ -53,3 +53,17 @@
   @apply prose-li:text-text;
   @apply prose-thead:border-border prose-tr:border-border prose-td:text-text;
 }
+
+
+//banner
+.banner-title {
+  @apply font-bold lg:text-[72px];
+
+  strong {
+    @apply text-primary;
+  }
+
+  span {
+    @apply font-normal;
+  }
+}

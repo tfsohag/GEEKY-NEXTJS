@@ -23,7 +23,7 @@ body.menu-open {
 }
 
 .collapse-menu {
-  @apply fixed lg:static items-center lg:space-x-8 lg:flex max-w-[400px] lg:max-w-full bg-white right-0 h-[100vh] lg:h-auto top-0 w-full lg:w-auto z-10 border-l lg:border-l-0 p-6 lg:p-0 mx-0 transition-transform duration-300 ease-in-out; 
+  @apply fixed lg:static items-center lg:space-x-8 lg:flex max-w-[400px] lg:max-w-full bg-white right-0 h-[100vh] lg:h-auto top-0 w-full lg:w-auto z-10 border-l border-l-dark lg:border-l-0 p-6 lg:p-0 mx-0 transition-transform duration-300 ease-in-out; 
 }
 
 .navbar-brand {
@@ -34,7 +34,7 @@ body.menu-open {
 }
 
 .navbar-nav {
-  @apply mt-11 lg:mt-0;
+  @apply mt-16 lg:mt-0;
 }
 
 .nav-item {
