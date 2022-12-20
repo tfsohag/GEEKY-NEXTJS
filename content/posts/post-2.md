@@ -1,11 +1,12 @@
 ---
-title: How to make toys from old Olarpaper
+title: My work from home workstation
 date: 2022-04-04T05:00:00Z
-image: 
+image: /images/post/post-2.png
 categories: ["development"]
-authors: ["Wanda Maxima"]
+authors: themefisher
 tags: ["diy", "toy"]
 draft: false
+featured: true
 ---
 
 Nemo vel ad consectetur namut rutrum ex, venenatis sollicitudin urna. Aliquam erat volutpat. Integer eu ipsum sem. Ut bibendum lacus vestibulum maximus suscipit. Quisque vitae nibh iaculis neque blandit euismod.

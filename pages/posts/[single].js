@@ -5,7 +5,7 @@ import parseMDX from "@lib/utils/mdxParser";
 const { blog_folder } = config.settings;
 
 // post single layout
-const Article = ({ post, authors, mdxContent, slug }) => {
+const Article = ({ post, mdxContent, slug }) => {
   const { frontmatter, content } = post[0];
 
   return (
@@ -13,7 +13,6 @@ const Article = ({ post, authors, mdxContent, slug }) => {
       frontmatter={frontmatter}
       content={content}
       mdxContent={mdxContent}
-      authors={authors}
       slug={slug}
     />
   );
@@ -45,7 +44,6 @@ export const getStaticProps = async ({ params }) => {
   return {
     props: {
       post: post,
-      authors: authors,
       mdxContent: mdxContent,
       slug: single,
     },
