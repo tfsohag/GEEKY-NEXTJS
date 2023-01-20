@@ -8,7 +8,7 @@ import { sortByDate } from "@lib/utils/sortFunctions";
 import { markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
 import bannerShape from "../public/images/banner-bg-shape.svg";
-const { blog_folder, summary_length } = config.settings;
+const { blog_folder, summary_length, promotionImage } = config.settings;
 
 const Home = ({ banner, posts, featured, sidebar, categories }) => {
   // define state
@@ -60,67 +60,87 @@ const Home = ({ banner, posts, featured, sidebar, categories }) => {
         <div className="container">
           {markdownify(featured.title, "h2", "h3 section-title")}
           <div className="row mt-11 items-start">
-            <div className="rounded border p-6 lg:col-8">
-              <div className="row">
-                <div className="lg:col-6">
-                  {featuredPosts[0].frontmatter.image && (
-                    <ImageFallback
-                      className="w-full rounded"
-                      src={featuredPosts[0].frontmatter.image}
-                      alt={featuredPosts[0].frontmatter.title}
-                      width={405}
-                      height={208}
-                    />
-                  )}
-                  <h3 className="h5 mb-2 mt-4">
-                    <Link
-                      href={`/${blog_folder}/${featuredPosts[0].slug}`}
-                      className="block hover:text-primary"
-                    >
-                      {featuredPosts[0].frontmatter.title}
-                    </Link>
-                  </h3>
-                  <ul className="flex items-center space-x-4">
-                    <li>{featuredPosts[0].frontmatter.authors}</li>
-                    <li>{dateFormat(featuredPosts[0].frontmatter.date)}</li>
-                  </ul>
-                  <p>
-                    {featuredPosts[0].content.slice(0, Number(summary_length))}
-                  </p>
-                </div>
-                <div className="mt-8 max-h-[480px] overflow-auto lg:mt-0 lg:col-6">
-                  {featuredPosts
-                    .slice(1, featuredPosts.length)
-                    .map((post, i, arr) => (
-                      <div
-                        className={`mb-6 flex items-center pb-6 ${
-                          i !== arr.length - 1 && "border-b"
-                        }`}
-                        key={`key-${i}`}
+            <div className="lg:col-8">
+              <div className="rounded border p-6 lg:col-8">
+                <div className="row">
+                  <div className="lg:col-6">
+                    {featuredPosts[0].frontmatter.image && (
+                      <ImageFallback
+                        className="w-full rounded"
+                        src={featuredPosts[0].frontmatter.image}
+                        alt={featuredPosts[0].frontmatter.title}
+                        width={405}
+                        height={208}
+                      />
+                    )}
+                    <h3 className="h5 mb-2 mt-4">
+                      <Link
+                        href={`/${blog_folder}/${featuredPosts[0].slug}`}
+                        className="block hover:text-primary"
                       >
-                        {post.frontmatter.image && (
-                          <ImageFallback
-                            className="mr-3 h-[85px] rounded object-cover"
-                            src={post.frontmatter.image}
-                            alt={post.frontmatter.title}
-                            width={105}
-                            height={85}
-                          />
-                        )}
-                        <div>
-                          <h3 className="h5 mb-2">
-                            <Link
-                              href={`/${blog_folder}/${post.slug}`}
-                              className="block hover:text-primary"
-                            >
-                              {post.frontmatter.title}
-                            </Link>
-                          </h3>
-                          <p>{dateFormat(post.frontmatter.date)}</p>
+                        {featuredPosts[0].frontmatter.title}
+                      </Link>
+                    </h3>
+                    <ul className="flex items-center space-x-4">
+                      <li>{featuredPosts[0].frontmatter.authors}</li>
+                      <li>{dateFormat(featuredPosts[0].frontmatter.date)}</li>
+                    </ul>
+                    <p>
+                      {featuredPosts[0].content.slice(
+                        0,
+                        Number(summary_length)
+                      )}
+                    </p>
+                    <Link
+                      className="btn btn-outline-primary mt-4"
+                      href={`/${blog_folder}/${featuredPosts[0].slug}`}
+                    >
+                      Read More
+                    </Link>
+                  </div>
+                  <div className="mt-8 max-h-[480px] overflow-auto lg:mt-0 lg:col-6">
+                    {featuredPosts
+                      .slice(1, featuredPosts.length)
+                      .map((post, i, arr) => (
+                        <div
+                          className={`mb-6 flex items-center pb-6 ${
+                            i !== arr.length - 1 && "border-b"
+                          }`}
+                          key={`key-${i}`}
+                        >
+                          {post.frontmatter.image && (
+                            <ImageFallback
+                              className="mr-3 h-[85px] rounded object-cover"
+                              src={post.frontmatter.image}
+                              alt={post.frontmatter.title}
+                              width={105}
+                              height={85}
+                            />
+                          )}
+                          <div>
+                            <h3 className="h5 mb-2">
+                              <Link
+                                href={`/${blog_folder}/${post.slug}`}
+                                className="block hover:text-primary"
+                              >
+                                {post.frontmatter.title}
+                              </Link>
+                            </h3>
+                            <p>{dateFormat(post.frontmatter.date)}</p>
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                  </div>
                 </div>
+              </div>
+
+              {/* Promotion */}
+              <div className="relative mt-11 h-[122px]">
+                <ImageFallback
+                  src={promotionImage}
+                  alt="promotion"
+                  layout="fill"
+                />
               </div>
             </div>
 
@@ -141,6 +161,7 @@ export const getStaticProps = async () => {
   const { frontmatter } = homepage;
   const { banner, featured, sidebar } = frontmatter;
   const posts = getSinglePage(`content/${blog_folder}`);
+  console.log(posts);
   const categories = [
     ...new Set(posts.map((post) => post.frontmatter.categories).flat()),
   ];

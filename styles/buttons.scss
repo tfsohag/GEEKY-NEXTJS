@@ -1,5 +1,5 @@
 .btn {
-  @apply font-secondary inline-block border px-5 py-2 font-semibold transition;
+  @apply font-secondary inline-block border px-5 py-2 font-bold transition;
 }
 
 .btn-primary {
@@ -7,5 +7,5 @@
 }
 
 .btn-outline-primary {
-  @apply border-primary bg-transparent hover:bg-primary hover:text-white;
+  @apply border-primary bg-transparent hover:bg-primary hover:text-white  rounded-[50px] text-primary font-bold;
 }
