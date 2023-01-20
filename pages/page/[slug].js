@@ -1,10 +1,13 @@
-import Pagination from "@components/Pagination";
 import config from "@config/config.json";
 import Base from "@layouts/Baseof";
+import ImageFallback from "@layouts/components/ImageFallback";
+import Pagination from "@layouts/components/Pagination";
 import { getListPage, getSinglePage } from "@lib/contentParser";
+import dateFormat from "@lib/utils/dateFormat";
 import { markdownify } from "@lib/utils/textConverter";
 import Post from "@partials/Post";
-const { blog_folder } = config.settings;
+import Link from "next/link";
+const { blog_folder, summary_length } = config.settings;
 
 // blog pagination
 const BlogPagination = ({
@@ -16,28 +19,51 @@ const BlogPagination = ({
 }) => {
   const indexOfLastPost = currentPage * pagination;
   const indexOfFirstPost = indexOfLastPost - pagination;
-  const totalPages = Math.ceil(posts.length / pagination);
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
   const { frontmatter } = postIndex;
   const { title } = frontmatter;
+  const totalPages = Math.ceil(posts.length / pagination);
 
   return (
     <Base title={title}>
       <section className="section">
         <div className="container">
           {markdownify(title, "h1", "h2 mb-8 text-center")}
-          <div className="row">
+          <div className="row mb-16">
             {currentPosts.map((post, i) => (
-              <div key={`key-${i}`} className="col-12 mb-8 sm:col-6">
-                <Post post={post} authors={authors} />
+              <div className="mt-16 lg:col-6" key={post.slug}>
+                {post.frontmatter.image && (
+                  <ImageFallback
+                    className="w-full rounded"
+                    src={post.frontmatter.image}
+                    alt={post.frontmatter.title}
+                    width={405}
+                    height={208}
+                  />
+                )}
+                <h3 className="h5 mb-2 mt-4">
+                  <Link
+                    href={`/${blog_folder}/${post.slug}`}
+                    className="block hover:text-primary"
+                  >
+                    {post.frontmatter.title}
+                  </Link>
+                </h3>
+                <ul className="flex items-center space-x-4">
+                  <li>{post.frontmatter.authors}</li>
+                  <li>{dateFormat(post.frontmatter.date)}</li>
+                </ul>
+                <p>{post.content.slice(0, Number(summary_length))}</p>
+                <Link
+                  className="btn btn-outline-primary mt-4"
+                  href={`/${blog_folder}/${post.slug}`}
+                >
+                  Read More
+                </Link>
               </div>
             ))}
           </div>
-          <Pagination
-            section={blog_folder}
-            totalPages={totalPages}
-            currentPage={currentPage}
-          />
+          <Pagination totalPages={totalPages} currentPage={currentPage} />
         </div>
       </section>
     </Base>

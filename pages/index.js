@@ -4,6 +4,7 @@ import ImageFallback from "@layouts/components/ImageFallback";
 import Sidebar from "@layouts/partials/Sidebar";
 import { getListPage, getSinglePage } from "@lib/contentParser";
 import dateFormat from "@lib/utils/dateFormat";
+import Pagination from "@layouts/components/Pagination";
 import { sortByDate } from "@lib/utils/sortFunctions";
 import { markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
@@ -60,9 +61,9 @@ const Home = ({ banner, posts, featured, sidebar, categories }) => {
         <div className="container">
           {markdownify(featured.title, "h2", "h3 section-title")}
 
-          {/* Featured posts */}
           <div className="row mt-11 items-start">
             <div className="lg:col-8">
+              {/* Featured posts */}
               <div className="rounded border p-6">
                 <div className="row">
                   <div className="lg:col-6">
@@ -145,9 +146,9 @@ const Home = ({ banner, posts, featured, sidebar, categories }) => {
                 />
               </div>
               {/* Recent Posts */}
-              <div className="rounded border p-6">
+              <div className="mb-16 rounded border p-6">
                 <div className="row -mt-16">
-                  {sortPostByDate.slice(0, 6).map((post) => (
+                  {sortPostByDate.slice(0, showPosts).map((post) => (
                     <div className="mt-16 lg:col-6" key={post.slug}>
                       {post.frontmatter.image && (
                         <ImageFallback
@@ -179,43 +180,12 @@ const Home = ({ banner, posts, featured, sidebar, categories }) => {
                       </Link>
                     </div>
                   ))}
-                  {/* <div className="lg:col-6">
-                    {featuredPosts[0].frontmatter.image && (
-                      <ImageFallback
-                        className="w-full rounded"
-                        src={featuredPosts[0].frontmatter.image}
-                        alt={featuredPosts[0].frontmatter.title}
-                        width={405}
-                        height={208}
-                      />
-                    )}
-                    <h3 className="h5 mb-2 mt-4">
-                      <Link
-                        href={`/${blog_folder}/${featuredPosts[0].slug}`}
-                        className="block hover:text-primary"
-                      >
-                        {featuredPosts[0].frontmatter.title}
-                      </Link>
-                    </h3>
-                    <ul className="flex items-center space-x-4">
-                      <li>{featuredPosts[0].frontmatter.authors}</li>
-                      <li>{dateFormat(featuredPosts[0].frontmatter.date)}</li>
-                    </ul>
-                    <p>
-                      {featuredPosts[0].content.slice(
-                        0,
-                        Number(summary_length)
-                      )}
-                    </p>
-                    <Link
-                      className="btn btn-outline-primary mt-4"
-                      href={`/${blog_folder}/${featuredPosts[0].slug}`}
-                    >
-                      Read More
-                    </Link>
-                  </div> */}
                 </div>
               </div>
+              <Pagination
+                totalPages={Math.ceil(posts.length / showPosts)}
+                currentPage={1}
+              />
             </div>
             {/* sidebar */}
             <Sidebar posts={posts} data={sidebar} />
