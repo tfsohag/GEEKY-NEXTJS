@@ -85,3 +85,7 @@
     @apply inline-block text-dark hover:text-primary  p-2;
   }
 }
+
+.newsletter-input:focus + svg {
+  opacity: 0;
+}

@@ -8,8 +8,9 @@ import { markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
 import { useState } from "react";
 const { blog_folder } = config.settings;
+const { widget, newsletter } = config;
 
-const Sidebar = ({ posts, data }) => {
+const Sidebar = ({ posts, categories }) => {
   const sortPostByDate = sortByDate(posts);
   const featuredPosts = sortPostByDate.filter(
     (post) => post.frontmatter.featured
@@ -17,40 +18,23 @@ const Sidebar = ({ posts, data }) => {
 
   const [showRecent, setShowRecent] = useState(true);
 
-  const uniqueCategories = [
-    ...new Set(posts.map((post) => post.frontmatter.categories).flat()),
-  ];
-
-  const categories = uniqueCategories.map((category) => {
-    const filteredPosts = posts.filter((post) =>
-      post.frontmatter.categories.includes(category)
-    );
-    return {
-      name: category,
-      posts: filteredPosts.length,
-    };
-  });
-
   return (
     <aside className="mt-12 px-6 lg:mt-0 lg:col-4">
       <div className="rounded border p-6">
         <ImageFallback
           className="mx-auto"
-          src={data.logo}
+          src={widget.logo}
           width={150}
           height={39}
           alt="logo"
         />
-        {markdownify(data.content, "p", "mt-8")}
+        {markdownify(widget.content, "p", "mt-8")}
         <Social className="socials mt-6 justify-center" source={social} />
       </div>
 
+      {/* categories widget */}
       <div className="mt-6 rounded border p-6">
-        {markdownify(
-          data.title_category,
-          "h4",
-          "section-title text-center mb-12"
-        )}
+        <h4 className="section-title mb-12 text-center">Blog Categories</h4>
         <ul>
           {categories.map((category, i) => (
             <li
@@ -77,7 +61,7 @@ const Sidebar = ({ posts, data }) => {
                 />
               </svg>
               <Link className="py-2" href={`/categories/${category.name}`}>
-                {category.name}
+                {category.name.replace("-", " ")}
                 <span className="absolute top-1/2 right-0 -translate-y-1/2 text-[10px] text-gray-500">
                   {category.posts}
                 </span>
@@ -87,6 +71,7 @@ const Sidebar = ({ posts, data }) => {
         </ul>
       </div>
 
+      {/* featured widget */}
       <div className="mt-6 rounded border p-6">
         <h4 className="section-title mb-12 text-center">Featured</h4>
         <div className="mb-12 flex items-center justify-center">
@@ -166,6 +151,47 @@ const Sidebar = ({ posts, data }) => {
                 </div>
               </div>
             ))}
+      </div>
+
+      <div className="mt-6  rounded border p-6 text-center">
+        <h4 className="section-title">{newsletter.title}</h4>
+        <p className="mt-10 text-xs">{newsletter.content}</p>
+        <form action="#" className="py-6">
+          <fieldset className="relative">
+            <input
+              className="newsletter-input h-12 w-full rounded-3xl border-none bg-[#f2f2f2] px-5 py-3 pr-12 text-dark placeholder:text-xs"
+              type="text"
+              placeholder="Type And Hit Enter"
+            />
+            <svg
+              className="absolute top-1/2 right-5 -translate-y-1/2 transition duration-75"
+              width="20px"
+              height="20px"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              stroke="#555"
+            >
+              <path
+                d="M1.60175 4.20114C2.14997 3.47258 3.02158 3 4 3H20C20.9784 3 21.85 3.47258 22.3982 4.20113L12 11.7635L1.60175 4.20114Z"
+                fill="#555"
+              ></path>
+              <path
+                d="M1 6.2365V18C1 19.6523 2.34772 21 4 21H20C21.6523 21 23 19.6523 23 18V6.23649L13.1763 13.381C12.475 13.891 11.525 13.891 10.8237 13.381L1 6.2365Z"
+                fill="#555"
+              ></path>
+            </svg>
+          </fieldset>
+          <input
+            className="d-block  btn btn-primary mt-4 w-full"
+            type="submit"
+            value="Sign In"
+          />
+        </form>
+        <p className="text-xs">
+          By Singing Up, You Agree To
+          <span className="ml-1 text-primary">Privacy Policy</span>
+        </p>
       </div>
     </aside>
   );

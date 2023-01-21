@@ -10,9 +10,10 @@ import { markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
 import bannerShape from "../public/images/banner-bg-shape.svg";
 import Post from "@layouts/partials/Post";
+import { getTaxonomy } from "@lib/taxonomyParser";
 const { blog_folder, summary_length, promotionImage } = config.settings;
 
-const Home = ({ banner, posts, featured, sidebar, categories }) => {
+const Home = ({ banner, posts, featured, categories }) => {
   // define state
   const sortPostByDate = sortByDate(posts);
   const featuredPosts = sortPostByDate.filter(
@@ -130,7 +131,7 @@ const Home = ({ banner, posts, featured, sidebar, categories }) => {
               />
             </div>
             {/* sidebar */}
-            <Sidebar posts={posts} data={sidebar} />
+            <Sidebar posts={posts} categories={categories} />
           </div>
         </div>
       </section>
@@ -146,9 +147,8 @@ export const getStaticProps = async () => {
   const { frontmatter } = homepage;
   const { banner, featured, sidebar } = frontmatter;
   const posts = getSinglePage(`content/${blog_folder}`);
-  const categories = [
-    ...new Set(posts.map((post) => post.frontmatter.categories).flat()),
-  ];
+  const categories = getTaxonomy(`content/${blog_folder}`, "categories");
+  console.log(categories);
 
   const categoriesWithPostsCount = categories.map((category) => {
     const filteredPosts = posts.filter((post) =>
