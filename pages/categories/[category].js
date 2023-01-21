@@ -14,7 +14,9 @@ const Category = ({ category, posts, authors }) => {
         <div className="container">
           <h1 className="h3 mb-8">
             Showing posts from
-            <span className="section-title ml-1 text-primary">{category}</span>
+            <span className="section-title ml-1 capitalize text-primary">
+              {category.replace("-", " ")}
+            </span>
           </h1>
           <div className="row">
             {posts.map((post, i) => (

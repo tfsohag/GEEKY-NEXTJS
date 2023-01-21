@@ -17,8 +17,6 @@ const Sidebar = ({ posts, data }) => {
 
   const [showRecent, setShowRecent] = useState(true);
 
-  console.log(showRecent);
-
   const uniqueCategories = [
     ...new Set(posts.map((post) => post.frontmatter.categories).flat()),
   ];
