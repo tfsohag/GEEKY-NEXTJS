@@ -1,5 +1,6 @@
 import config from "@config/config.json";
 import Base from "@layouts/Baseof";
+import Sidebar from "@layouts/partials/Sidebar";
 import { getSinglePage } from "@lib/contentParser";
 import { getTaxonomy } from "@lib/taxonomyParser";
 import { slugify } from "@lib/utils/textConverter";
@@ -7,7 +8,7 @@ import Post from "@partials/Post";
 const { blog_folder } = config.settings;
 
 // category page
-const Category = ({ category, posts, authors }) => {
+const Category = ({ category, posts, authors, categories }) => {
   return (
     <Base title={category}>
       <div className="section">
@@ -19,11 +20,16 @@ const Category = ({ category, posts, authors }) => {
             </span>
           </h1>
           <div className="row">
-            {posts.map((post, i) => (
-              <div key={`key-${i}`} className="col-12 mb-8 sm:col-6">
-                <Post post={post} authors={authors} />
+            <div className="lg:col-8">
+              <div className="row rounded border p-6">
+                {posts.map((post, i) => (
+                  <div key={`key-${i}`} className="col-12 mb-8 sm:col-6">
+                    <Post post={post} authors={authors} />
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+            <Sidebar posts={posts} categories={categories} />
           </div>
         </div>
       </div>
@@ -55,8 +61,24 @@ export const getStaticProps = ({ params }) => {
     )
   );
   const authors = getSinglePage("content/authors");
+  const categories = getTaxonomy(`content/${blog_folder}`, "categories");
+
+  const categoriesWithPostsCount = categories.map((category) => {
+    const filteredPosts = posts.filter((post) =>
+      post.frontmatter.categories.includes(category)
+    );
+    return {
+      name: category,
+      posts: filteredPosts.length,
+    };
+  });
 
   return {
-    props: { posts: filterPosts, category: params.category, authors: authors },
+    props: {
+      posts: filterPosts,
+      category: params.category,
+      authors: authors,
+      categories: categoriesWithPostsCount,
+    },
   };
 };

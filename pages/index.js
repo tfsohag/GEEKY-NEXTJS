@@ -148,7 +148,6 @@ export const getStaticProps = async () => {
   const { banner, featured, sidebar } = frontmatter;
   const posts = getSinglePage(`content/${blog_folder}`);
   const categories = getTaxonomy(`content/${blog_folder}`, "categories");
-  console.log(categories);
 
   const categoriesWithPostsCount = categories.map((category) => {
     const filteredPosts = posts.filter((post) =>

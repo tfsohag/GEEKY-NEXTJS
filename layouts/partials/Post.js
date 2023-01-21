@@ -10,7 +10,7 @@ const Post = ({ post }) => {
       <div className="relative">
         {post.frontmatter.image && (
           <ImageFallback
-            className="w-full rounded"
+            className="rounded"
             src={post.frontmatter.image}
             alt={post.frontmatter.title}
             width={405}
