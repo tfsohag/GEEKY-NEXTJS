@@ -1,10 +1,11 @@
 ---
-title: "How to make toys from old Olarpaper"
+title: "What is a Virtual Assistant"
 date: 2022-04-04T05:00:00Z
 image: /images/post/post-4.png
-categories: ["art"]
+categories: ["github"]
 authors: ["Linda Lanester"]
 tags: ["diy", "toy"]
+featured: false
 draft: false
 ---
 

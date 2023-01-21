@@ -17,6 +17,8 @@ const Sidebar = ({ posts, data }) => {
 
   const [showRecent, setShowRecent] = useState(true);
 
+  console.log(showRecent);
+
   const uniqueCategories = [
     ...new Set(posts.map((post) => post.frontmatter.categories).flat()),
   ];
@@ -54,11 +56,13 @@ const Sidebar = ({ posts, data }) => {
         <ul>
           {categories.map((category, i) => (
             <li
-              className="relative mb-2 flex items-center justify-between pl-6 text-[16px] font-bold capitalize text-dark"
+              className={`relative mb-2 flex items-center justify-between pl-6 text-[16px] font-bold capitalize text-dark ${
+                i !== categories.length - 1 && "border-b"
+              }`}
               key={i}
             >
               <svg
-                className="absolute left-0 top-1"
+                className="absolute left-0 top-2.5"
                 width="20px"
                 height="20px"
                 viewBox="0 0 20 20"
@@ -74,9 +78,11 @@ const Sidebar = ({ posts, data }) => {
                   fill="#2ba283"
                 />
               </svg>
-              <Link className="relative" href={`/categories/${category.name}`}>
+              <Link className="py-2" href={`/categories/${category.name}`}>
                 {category.name}
-                <span>{category.posts}</span>
+                <span className="absolute top-1/2 right-0 -translate-y-1/2 text-[10px] text-gray-500">
+                  {category.posts}
+                </span>
               </Link>
             </li>
           ))}
@@ -84,9 +90,27 @@ const Sidebar = ({ posts, data }) => {
       </div>
 
       <div className="mt-6 rounded border p-6">
-        <h4 className="section-title mb-12 text-center">Blog Categories</h4>
+        <h4 className="section-title mb-12 text-center">Featured</h4>
+        <div className="mb-12 flex items-center justify-center">
+          <button
+            className={`btn px-5 py-2 ${
+              showRecent ? "btn-outline-primary" : "btn-primary"
+            }`}
+            onClick={() => setShowRecent(false)}
+          >
+            Featured
+          </button>
+          <button
+            className={`btn ml-3  px-5 py-2 ${
+              showRecent ? "btn-primary" : "btn-outline-primary"
+            }`}
+            onClick={() => setShowRecent(true)}
+          >
+            Recent
+          </button>
+        </div>
         {showRecent
-          ? sortPostByDate.map((post, i, arr) => (
+          ? sortPostByDate.slice(0, 5).map((post, i, arr) => (
               <div
                 className={`flex items-center ${
                   i !== arr.length - 1 && "mb-6 border-b pb-6"
@@ -115,7 +139,7 @@ const Sidebar = ({ posts, data }) => {
                 </div>
               </div>
             ))
-          : featuredPosts.slice(1, featuredPosts.length).map((post, i, arr) => (
+          : featuredPosts.slice(1, 6).map((post, i, arr) => (
               <div
                 className={`flex items-center pb-6 ${
                   i !== arr.length - 1 && "mb-6 border-b"

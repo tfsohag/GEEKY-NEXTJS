@@ -1,10 +1,11 @@
 ---
-title: "How to make toys from old Olarpaper"
+title: "Github Repository Controls"
 date: 2022-04-04T05:00:00Z
 image: /images/post/post-1.png
-categories: ["art"]
+categories: ["workstation", "youtube"]
 authors: ["Linda Lanester"]
 tags: ["diy", "toy"]
+featured: false
 draft: false
 ---
 

@@ -1,10 +1,11 @@
 ---
-title: "How to make toys from old Olarpaper"
+title: "Drone Software and Development"
 date: 2022-04-04T05:00:00Z
 image: /images/post/post-8.png
-categories: ["art"]
+categories: ["drone", "robotics"]
 authors: ["Linda Lanester"]
 tags: ["diy", "toy"]
+featured: true
 draft: false
 ---
 

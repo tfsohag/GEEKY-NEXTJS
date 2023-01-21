@@ -9,6 +9,7 @@ import { sortByDate } from "@lib/utils/sortFunctions";
 import { markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
 import bannerShape from "../public/images/banner-bg-shape.svg";
+import Post from "@layouts/partials/Post";
 const { blog_folder, summary_length, promotionImage } = config.settings;
 
 const Home = ({ banner, posts, featured, sidebar, categories }) => {
@@ -67,41 +68,9 @@ const Home = ({ banner, posts, featured, sidebar, categories }) => {
               <div className="rounded border p-6">
                 <div className="row">
                   <div className="lg:col-6">
-                    {featuredPosts[0].frontmatter.image && (
-                      <ImageFallback
-                        className="w-full rounded"
-                        src={featuredPosts[0].frontmatter.image}
-                        alt={featuredPosts[0].frontmatter.title}
-                        width={405}
-                        height={208}
-                      />
-                    )}
-                    <h3 className="h5 mb-2 mt-4">
-                      <Link
-                        href={`/${blog_folder}/${featuredPosts[0].slug}`}
-                        className="block hover:text-primary"
-                      >
-                        {featuredPosts[0].frontmatter.title}
-                      </Link>
-                    </h3>
-                    <ul className="flex items-center space-x-4">
-                      <li>{featuredPosts[0].frontmatter.authors}</li>
-                      <li>{dateFormat(featuredPosts[0].frontmatter.date)}</li>
-                    </ul>
-                    <p>
-                      {featuredPosts[0].content.slice(
-                        0,
-                        Number(summary_length)
-                      )}
-                    </p>
-                    <Link
-                      className="btn btn-outline-primary mt-4"
-                      href={`/${blog_folder}/${featuredPosts[0].slug}`}
-                    >
-                      Read More
-                    </Link>
+                    <Post post={featuredPosts[0]} />
                   </div>
-                  <div className="mt-8 max-h-[480px] overflow-auto lg:mt-0 lg:col-6">
+                  <div className="scrollbar-w-[10px] mt-8 max-h-[480px] scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-border lg:mt-0 lg:col-6">
                     {featuredPosts
                       .slice(1, featuredPosts.length)
                       .map((post, i, arr) => (
@@ -150,34 +119,7 @@ const Home = ({ banner, posts, featured, sidebar, categories }) => {
                 <div className="row -mt-16">
                   {sortPostByDate.slice(0, showPosts).map((post) => (
                     <div className="mt-16 lg:col-6" key={post.slug}>
-                      {post.frontmatter.image && (
-                        <ImageFallback
-                          className="w-full rounded"
-                          src={post.frontmatter.image}
-                          alt={post.frontmatter.title}
-                          width={405}
-                          height={208}
-                        />
-                      )}
-                      <h3 className="h5 mb-2 mt-4">
-                        <Link
-                          href={`/${blog_folder}/${post.slug}`}
-                          className="block hover:text-primary"
-                        >
-                          {post.frontmatter.title}
-                        </Link>
-                      </h3>
-                      <ul className="flex items-center space-x-4">
-                        <li>{post.frontmatter.authors}</li>
-                        <li>{dateFormat(post.frontmatter.date)}</li>
-                      </ul>
-                      <p>{post.content.slice(0, Number(summary_length))}</p>
-                      <Link
-                        className="btn btn-outline-primary mt-4"
-                        href={`/${blog_folder}/${post.slug}`}
-                      >
-                        Read More
-                      </Link>
+                      <Post post={post} />
                     </div>
                   ))}
                 </div>

@@ -32,34 +32,7 @@ const BlogPagination = ({
           <div className="row mb-16">
             {currentPosts.map((post, i) => (
               <div className="mt-16 lg:col-6" key={post.slug}>
-                {post.frontmatter.image && (
-                  <ImageFallback
-                    className="w-full rounded"
-                    src={post.frontmatter.image}
-                    alt={post.frontmatter.title}
-                    width={405}
-                    height={208}
-                  />
-                )}
-                <h3 className="h5 mb-2 mt-4">
-                  <Link
-                    href={`/${blog_folder}/${post.slug}`}
-                    className="block hover:text-primary"
-                  >
-                    {post.frontmatter.title}
-                  </Link>
-                </h3>
-                <ul className="flex items-center space-x-4">
-                  <li>{post.frontmatter.authors}</li>
-                  <li>{dateFormat(post.frontmatter.date)}</li>
-                </ul>
-                <p>{post.content.slice(0, Number(summary_length))}</p>
-                <Link
-                  className="btn btn-outline-primary mt-4"
-                  href={`/${blog_folder}/${post.slug}`}
-                >
-                  Read More
-                </Link>
+                <Post post={post} />
               </div>
             ))}
           </div>

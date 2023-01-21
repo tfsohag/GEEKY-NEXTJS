@@ -12,9 +12,9 @@ const Category = ({ category, posts, authors }) => {
     <Base title={category}>
       <div className="section">
         <div className="container">
-          <h1 className="h2 mb-8 text-center">
-            Showing posts from <span className="text-primary">{category}</span>{" "}
-            category
+          <h1 className="h3 mb-8">
+            Showing posts from
+            <span className="section-title ml-1 text-primary">{category}</span>
           </h1>
           <div className="row">
             {posts.map((post, i) => (
