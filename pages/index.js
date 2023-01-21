@@ -145,7 +145,7 @@ export default Home;
 export const getStaticProps = async () => {
   const homepage = await getListPage("content/_index.md");
   const { frontmatter } = homepage;
-  const { banner, featured, sidebar } = frontmatter;
+  const { banner, featured } = frontmatter;
   const posts = getSinglePage(`content/${blog_folder}`);
   const categories = getTaxonomy(`content/${blog_folder}`, "categories");
 
@@ -164,7 +164,6 @@ export const getStaticProps = async () => {
       banner: banner,
       posts: posts,
       featured,
-      sidebar,
       categories: categoriesWithPostsCount,
     },
   };

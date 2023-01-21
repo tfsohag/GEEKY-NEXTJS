@@ -29,7 +29,10 @@ const Sidebar = ({ posts, categories }) => {
           alt="logo"
         />
         {markdownify(widget.content, "p", "mt-8")}
-        <Social className="socials mt-6 justify-center" source={social} />
+        <Social
+          className="socials sidebar-socials mt-6 justify-center"
+          source={social}
+        />
       </div>
 
       {/* categories widget */}

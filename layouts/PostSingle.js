@@ -1,54 +1,97 @@
 import Share from "@components/Share";
 import Base from "@layouts/Baseof";
+import dateFormat from "@lib/utils/dateFormat";
 import { markdownify } from "@lib/utils/textConverter";
+import { DiscussionEmbed } from "disqus-react";
 import { MDXRemote } from "next-mdx-remote";
 import Image from "next/image";
+import Link from "next/link";
+import Post from "./partials/Post";
+import Sidebar from "./partials/Sidebar";
 import shortcodes from "./shortcodes/all";
 
-const PostSingle = ({ frontmatter, content, mdxContent, authors, slug }) => {
-  let { description, title, date, image, categories, tags } = frontmatter;
+const PostSingle = ({
+  frontmatter,
+  content,
+  mdxContent,
+  slug,
+  posts,
+  allCategories,
+  relatedPosts,
+}) => {
+  let { description, title, date, image, categories, authors } = frontmatter;
   description = description ? description : content.slice(0, 120);
+
+  const disqusShortname = "your-site-shortname";
+  const disqusConfig = {
+    url: "http://localhost:3000",
+    identifier: "article-id",
+    title: "Title of Your Article",
+  };
 
   return (
     <Base title={title} description={description}>
       <section className="section">
         <div className="container">
-          <article className="text-center">
-            {markdownify(title, "h1", "h2")}
+          <div className="row">
+            <div className="lg:col-8">
+              <article>
+                <div className="relative">
+                  {image && (
+                    <Image
+                      src={image}
+                      height="500"
+                      width="1000"
+                      alt={title}
+                      className="rounded-lg"
+                    />
+                  )}
+                  <ul className="absolute top-3 left-2 flex flex-wrap items-center">
+                    {categories.map((tag, index) => (
+                      <li
+                        className="mx-2 inline-flex h-7 rounded-[35px] bg-primary px-3 text-white"
+                        key={"tag-" + index}
+                      >
+                        <Link
+                          className="capitalize"
+                          href={`/categories/${tag.replace(" ", "-")}`}
+                        >
+                          {tag}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                {markdownify(title, "h1", "h2 mt-16")}
+                <ul className="mt-5 flex items-center space-x-4">
+                  <li>{authors}</li>
+                  <li>{dateFormat(date)}</li>
+                </ul>
+                <div className="content mb-16">
+                  <MDXRemote {...mdxContent} components={shortcodes} />
+                </div>
+              </article>
+            </div>
+            <Sidebar posts={posts} categories={allCategories} />
+          </div>
+          <div className="row">
+            <DiscussionEmbed
+              shortname={disqusShortname}
+              config={disqusConfig}
+            />
+          </div>
+        </div>
 
-            {image && (
-              <Image
-                src={image}
-                height="500"
-                width="1000"
-                alt={title}
-                className="rounded-lg"
-              />
-            )}
-            <div className="content mb-16 text-left">
-              <MDXRemote {...mdxContent} components={shortcodes} />
-            </div>
-            <div className="flex flex-wrap items-center justify-between">
-              {/* <ul className="mr-4 mb-4 space-x-3">
-                {tags.map((tag, i) => (
-                  <li className="inline-block" key={`tag-${i}`}>
-                    <Link
-                      href={`/tags/${slugify(tag)}`}
-                      className="bg-light block rounded-lg px-4 py-2 font-semibold text-dark hover:text-primary"
-                    >
-                      {humanize(tag)}
-                    </Link>
-                  </li>
-                ))}
-              </ul> */}
-              <Share
-                className="social-share mb-4"
-                title={title}
-                description={description}
-                slug={slug}
-              />
-            </div>
-          </article>
+        {/* Related posts */}
+        <div className="container mt-20">
+          <h2 className="h3 section-title">Related Posts</h2>
+          <div className="row mt-16">
+            {relatedPosts.map((post) => (
+              <div key={post.frontmatter.slug} className="mb-12 lg:col-4">
+                <Post post={post} />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </Base>
