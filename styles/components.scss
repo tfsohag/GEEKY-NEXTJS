@@ -97,6 +97,17 @@
   opacity: 0;
 }
 
-.sidebar-socials {
+.sidebar-socials , footer .socials {
   @apply border-primary
+}
+
+//experience
+.experience {
+  ul li {
+    @apply relative pl-7;
+
+    &::before {
+      @apply content-[''] absolute left-1 w-[9px] h-[9px] rounded-full bg-primary top-2.5 shadow-[0px_0px_0px_2px] shadow-primary border-2 border-white;
+    }
+  }
 }

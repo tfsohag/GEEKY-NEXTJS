@@ -1,4 +1,3 @@
-import Share from "@components/Share";
 import Base from "@layouts/Baseof";
 import dateFormat from "@lib/utils/dateFormat";
 import { markdownify } from "@lib/utils/textConverter";

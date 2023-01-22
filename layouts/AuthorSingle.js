@@ -7,7 +7,6 @@ import Image from "next/image";
 
 const AuthorSingle = ({ frontmatter, content, mdxContent }) => {
   const { description, social, title, image } = frontmatter;
-
   return (
     <Base
       title={title}

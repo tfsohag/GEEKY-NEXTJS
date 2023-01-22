@@ -61,7 +61,7 @@ const Home = ({ banner, posts, featured, categories }) => {
       {/* Home main */}
       <section className="section">
         <div className="container">
-          {markdownify(featured.title, "h2", "h3 section-title")}
+          {markdownify(featured.title, "h2", "h2 section-title")}
 
           <div className="row mt-11 items-start">
             <div className="lg:col-8">
