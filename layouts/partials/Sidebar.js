@@ -121,7 +121,19 @@ const Sidebar = ({ posts, categories }) => {
                       {post.frontmatter.title}
                     </Link>
                   </h3>
-                  <p>{dateFormat(post.frontmatter.date)}</p>
+                  <p className="inline-flex items-center font-secondary text-xs">
+                    <svg
+                      className="mr-1"
+                      fill="currentColor"
+                      width="14px"
+                      height="14px"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M3,22H21a1,1,0,0,0,1-1V6a1,1,0,0,0-1-1H17V3a1,1,0,0,0-2,0V5H9V3A1,1,0,0,0,7,3V5H3A1,1,0,0,0,2,6V21A1,1,0,0,0,3,22ZM4,7H20v3H4Zm0,5H20v8H4Z" />
+                    </svg>
+                    {dateFormat(post.frontmatter.date)}
+                  </p>
                 </div>
               </div>
             ))
@@ -162,7 +174,7 @@ const Sidebar = ({ posts, categories }) => {
         <form action="#" className="py-6">
           <fieldset className="relative">
             <input
-              className="newsletter-input h-12 w-full rounded-3xl border-none bg-[#f2f2f2] px-5 py-3 pr-12 text-dark placeholder:text-xs"
+              className="newsletter-input bg-gray-100 h-12 w-full rounded-3xl border-none px-5 py-3 pr-12 text-dark placeholder:text-xs"
               type="text"
               placeholder="Type And Hit Enter"
             />

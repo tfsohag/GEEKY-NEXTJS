@@ -46,7 +46,7 @@
   @apply prose-hr:border-border;
   @apply prose-p:text-base prose-p:leading-6 prose-p:text-black;
   @apply prose-img:rounded-lg;
-  @apply prose-blockquote:border-primary prose-blockquote:py-1 prose-blockquote:px-4 prose-blockquote:bg-[#f2f2f2] prose-blockquote:not-italic prose-blockquote:text-2xl;
+  @apply prose-blockquote:border-primary prose-blockquote:py-1 prose-blockquote:px-4 prose-blockquote:bg-gray-100 prose-blockquote:not-italic prose-blockquote:text-2xl;
   @apply prose-code:rounded-sm prose-code:border prose-code:border-border prose-code:px-1 prose-code:text-primary;
   @apply prose-strong:text-dark;
   @apply prose-a:text-primary;

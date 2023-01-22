@@ -53,11 +53,15 @@ body.menu-open {
 }
 
 .nav-dropdown-item {
-  @apply mb-1;
+  @apply mb-1.5;
 }
 
 .nav-dropdown-link {
-  @apply min-w-[150px] py-1 text-sm font-semibold text-dark transition hover:text-primary;
+  @apply min-w-[150px] py-2.5 px-3.5 rounded text-base font-semibold text-dark transition hover:text-primary hover:bg-primary/10;
+
+  &.active {
+    @apply text-primary bg-primary/10
+  }
 }
 
 // search style

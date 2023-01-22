@@ -49,6 +49,9 @@ module.exports = {
         body: theme.colors.default.theme_color.body,
         border: theme.colors.default.theme_color.border,
         light: theme.colors.default.text_color.light,
+        gray: {
+          100: theme.colors.default.theme_color.gray_100,
+        },
       },
       fontSize: {
         base: font_base + "px",

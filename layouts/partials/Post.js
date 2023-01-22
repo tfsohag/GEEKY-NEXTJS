@@ -42,8 +42,41 @@ const Post = ({ post }) => {
         </Link>
       </h3>
       <ul className="flex items-center space-x-4">
-        <li>{post.frontmatter.authors}</li>
-        <li>{dateFormat(post.frontmatter.date)}</li>
+        <li>
+          <Link className="inline-flex items-center" href="#">
+            <svg
+              className="mr-1"
+              width="14px"
+              height="14px"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z"
+                fill="currentColor"
+              />
+              <path
+                d="M12.0002 14.5C6.99016 14.5 2.91016 17.86 2.91016 22C2.91016 22.28 3.13016 22.5 3.41016 22.5H20.5902C20.8702 22.5 21.0902 22.28 21.0902 22C21.0902 17.86 17.0102 14.5 12.0002 14.5Z"
+                fill="currentColor"
+              />
+            </svg>
+            {post.frontmatter.authors}
+          </Link>
+        </li>
+        <li className="inline-flex items-center">
+          <svg
+            className="mr-1"
+            fill="currentColor"
+            width="14px"
+            height="14px"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M3,22H21a1,1,0,0,0,1-1V6a1,1,0,0,0-1-1H17V3a1,1,0,0,0-2,0V5H9V3A1,1,0,0,0,7,3V5H3A1,1,0,0,0,2,6V21A1,1,0,0,0,3,22ZM4,7H20v3H4Zm0,5H20v8H4Z" />
+          </svg>
+          {dateFormat(post.frontmatter.date)}
+        </li>
       </ul>
       <p>{post.content.slice(0, Number(summary_length))}</p>
       <Link
