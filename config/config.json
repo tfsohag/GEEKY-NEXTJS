@@ -20,14 +20,12 @@
 
   "widget": {
     "logo": "/images/logo.png",
-    "content": "Lorem ipsum dolor sit amet, conse tfctetur adipiscing elit. Vel in in donec iaculis tempasus odio nunc laoreet . Libero ullam rgscorper.",
-    "enabled": true
+    "content": "Lorem ipsum dolor sit amet, conse tfctetur adipiscing elit. Vel in in donec iaculis tempasus odio nunc laoreet . Libero ullam rgscorper."
   },
 
   "newsletter": {
     "title": "Newsletter",
-    "content": "Join thousands of Tiny Salt subscribers and get our best recipes delivered each week!",
-    "enabled": true
+    "content": "Join thousands of Tiny Salt subscribers and get our best recipes delivered each week!"
   },
 
   "params": {

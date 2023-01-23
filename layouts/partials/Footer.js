@@ -12,7 +12,7 @@ const Footer = () => {
   return (
     <footer className="section relative pt-[70px] pb-[30px]">
       <ImageFallback
-        className="-z-[1] object-cover object-top"
+        className="-z-[1] object-cover object-left md:object-top"
         src="/images/footer-bg-shape.svg"
         alt=""
         fill={true}
@@ -29,7 +29,7 @@ const Footer = () => {
             <li className="inline-block" key={menu.name}>
               <Link
                 href={menu.url}
-                className="p-4 font-bold text-dark hover:text-primary"
+                className="p-2 font-bold text-dark hover:text-primary lg:p-4"
               >
                 {menu.name}
               </Link>

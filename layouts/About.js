@@ -18,6 +18,7 @@ const About = ({ data }) => {
               height={616}
               alt={title}
               className="rounded-lg"
+              priority={true}
             />
           </div>
         )}

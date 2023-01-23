@@ -30,7 +30,7 @@
 // form style
 .form-input,
 .form-textarea {
-  @apply border-border focus:border-primary focus:ring-transparent;
+  @apply border-0 px-0 placeholder:text-xs bg-transparent border-b  border-border focus:border-primary focus:ring-transparent;
 }
 
 // content style
