@@ -37,7 +37,7 @@ body.menu-open {
 
 
 .nav-link {
-  @apply px-6 py-2.5 text-[13.5px] capitalize font-secondary font-semibold  transition hover:text-white md:px-5 md:py-3 hover:bg-primary rounded-[30px] text-left lg:text-center;
+  @apply px-6 py-2.5 text-[13.5px] capitalize font-secondary font-semibold text-dark dark:text-darkmode-light  transition hover:text-white md:px-5 md:py-3 hover:bg-primary rounded-[30px] text-left lg:text-center;
 
   &.active {
     @apply bg-primary text-white;
@@ -57,7 +57,7 @@ body.menu-open {
 }
 
 .nav-dropdown-link {
-  @apply min-w-[150px] py-2.5 px-3.5 rounded text-base font-semibold  transition hover:text-primary hover:bg-primary/10;
+  @apply min-w-[150px] py-2.5 px-3.5 rounded text-base font-semibold  transition hover:text-primary hover:bg-primary/10 text-dark dark:text-darkmode-light;
 
   &.active {
     @apply text-primary bg-primary/10
