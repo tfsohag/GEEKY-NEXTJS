@@ -8,7 +8,7 @@ const Contact = ({ data }) => {
   return (
     <section className="section relative">
       <ImageFallback
-        className="-z-[1] object-cover"
+        className="-z-[1] object-cover dark:invisible"
         src={bg_img}
         fill="true"
         alt=""
@@ -22,7 +22,7 @@ const Contact = ({ data }) => {
               "h1 my-10 lg:my-11 pt-11 text-center lg:text-[64px]"
             )}
           </div>
-          <div className="rounded border border-border p-6 lg:col-6">
+          <div className="rounded border border-border p-6 dark:border-darkmode-border lg:col-6">
             <h2>
               Send Us A
               <span className="ml-1.5 inline-flex items-center text-primary">
@@ -108,7 +108,7 @@ const Contact = ({ data }) => {
             <div key={"address-" + index} className=" md:col-6 lg:col-4">
               <div
                 className="my-4 flex h-[100px] items-center justify-center
-               rounded border border-border p-4"
+               rounded border border-border p-4 dark:border-darkmode-border"
               >
                 <ImageFallback
                   src={address.icon}

@@ -12,7 +12,7 @@ const Categories = ({ categories }) => {
         {markdownify(
           "Categories",
           "h1",
-          "h2 mb-16 bg-gray-100 py-12 text-center lg:text-[55px]"
+          "h2 mb-16 bg-theme-dark dark:bg-darkmode-theme-dark py-12 text-center lg:text-[55px]"
         )}
         <div className="container text-center">
           <ul className="row">
@@ -23,7 +23,7 @@ const Categories = ({ categories }) => {
               >
                 <Link
                   href={`/categories/${category}`}
-                  className="bg-gray-100 flex w-full items-center justify-center rounded-lg px-4 py-3.5 font-bold text-dark transition hover:bg-primary hover:text-white"
+                  className="bg-theme-light flex w-full items-center justify-center rounded-lg px-4 py-3.5 font-bold transition hover:bg-primary hover:text-white dark:bg-darkmode-theme-dark  dark:hover:bg-primary dark:hover:text-white"
                 >
                   <svg
                     className="mr-2"

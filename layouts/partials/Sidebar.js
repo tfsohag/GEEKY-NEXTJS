@@ -20,7 +20,7 @@ const Sidebar = ({ posts, categories }) => {
 
   return (
     <aside className="mt-12 px-6 lg:mt-0 lg:col-4">
-      <div className="rounded border p-6">
+      <div className="rounded border border-border p-6 dark:border-darkmode-border">
         <ImageFallback
           className="mx-auto"
           src={widget.logo}
@@ -36,13 +36,14 @@ const Sidebar = ({ posts, categories }) => {
       </div>
 
       {/* categories widget */}
-      <div className="mt-6 rounded border p-6">
+      <div className="mt-6 rounded border border-border p-6 dark:border-darkmode-border">
         <h4 className="section-title mb-12 text-center">Blog Categories</h4>
         <ul>
           {categories.map((category, i) => (
             <li
-              className={`relative mb-2 flex items-center justify-between pl-6 text-[16px] font-bold capitalize text-dark ${
-                i !== categories.length - 1 && "border-b"
+              className={`relative mb-2 flex items-center justify-between pl-6 text-[16px] font-bold capitalize ${
+                i !== categories.length - 1 &&
+                "border-b border-border dark:border-darkmode-border"
               }`}
               key={i}
             >
@@ -75,7 +76,7 @@ const Sidebar = ({ posts, categories }) => {
       </div>
 
       {/* featured widget */}
-      <div className="mt-6 rounded border p-6">
+      <div className="mt-6 rounded border border-border p-6 dark:border-darkmode-border">
         <h4 className="section-title mb-12 text-center">Featured</h4>
         <div className="mb-12 flex items-center justify-center">
           <button
@@ -99,7 +100,8 @@ const Sidebar = ({ posts, categories }) => {
           ? sortPostByDate.slice(0, 5).map((post, i, arr) => (
               <div
                 className={`flex items-center ${
-                  i !== arr.length - 1 && "mb-6 border-b pb-6"
+                  i !== arr.length - 1 &&
+                  "mb-6 border-b border-border pb-6 dark:border-darkmode-border"
                 }`}
                 key={`key-${i}`}
               >
@@ -168,13 +170,13 @@ const Sidebar = ({ posts, categories }) => {
             ))}
       </div>
 
-      <div className="mt-6  rounded border p-6 text-center">
+      <div className="mt-6  rounded border border-border p-6 text-center dark:border-darkmode-border">
         <h4 className="section-title">{newsletter.title}</h4>
         <p className="mt-10 text-xs">{newsletter.content}</p>
         <form action="#" className="py-6">
           <fieldset className="relative">
             <input
-              className="newsletter-input bg-gray-100 h-12 w-full rounded-3xl border-none px-5 py-3 pr-12 text-dark placeholder:text-xs"
+              className="newsletter-input bg-theme-light form-input h-12 w-full rounded-3xl border-none px-5 py-3 pr-12 text-dark placeholder:text-xs dark:bg-darkmode-theme-dark"
               type="text"
               placeholder="Type And Hit Enter"
             />

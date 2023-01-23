@@ -3,10 +3,6 @@ title: "Elements"
 draft: false
 ---
 
-#### Heading example
-
-Here is an example of headings. You can use this heading by the following markdown rules. For example: use `#` for heading 1 and use `######` for heading 6.
-
 # Heading 1
 
 ## Heading 2
@@ -21,15 +17,31 @@ Here is an example of headings. You can use this heading by the following markdo
 
 ---
 
+### Paragraph
+
+Did you come here for something in particular or just general Riker-bashing? And blowing into maximum warp speed, you appeared for an instant to be in two places at once. We have a saboteur aboard. We know you’re dealing in stolen ore. But I wanna talk about the assassination attempt on Lieutenant Worf. Could someone survive inside a transporter buffer for 75 years? Fate. It protects fools, little children, and ships.
+
+Did you come here for something in particular or just general Riker-bashing? And blowing into maximum warp speed, you appeared for an instant to be in two places at once. We have a saboteur aboard. We know you’re dealing in stolen ore. But I wanna talk about the assassination attempt on Lieutenant Worf. Could someone survive inside a transporter buffer for 75 years? Fate. It protects fools, little children, and ships.
+
+---
+
 ### Emphasis
 
-The emphasis, aka italics, with _asterisks_ or _underscores_.
+1. Did you come here for something in **particular** or just general
 
-Strong emphasis, aka bold, with **asterisks** or **underscores**.
+2. Did you come here for something in <ins>particular</ins>
 
-The combined emphasis with **asterisks and _underscores_**.
+3. _Did you come here_
 
-Strikethrough uses two tildes. ~~Scratch this.~~
+4. Did you come here for **something** in particular
+
+5. Did you come here for something in particular
+
+6. Did you come here for something in particular
+
+7. URLs and URLs in angle brackets will automatically get turned into links. [http://www.example.com](http://www.example.com) or
+
+8. [http://www.example.com](http://www.example.com) and sometimes example.com (but not on Github, for example).
 
 ---
 
@@ -57,12 +69,6 @@ Some text to show that the reference links can follow later.
 
 ---
 
-### Paragraph
-
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam nihil enim maxime corporis cumque totam aliquid nam sint inventore optio modi neque laborum officiis necessitatibus, facilis placeat pariatur! Voluptatem, sed harum pariatur adipisci voluptates voluptatum cumque, porro sint minima similique magni perferendis fuga! Optio vel ipsum excepturi tempore reiciendis id quidem? Vel in, doloribus debitis nesciunt fugit sequi magnam accusantium modi neque quis, vitae velit, pariatur harum autem a! Velit impedit atque maiores animi possimus asperiores natus repellendus excepturi sint architecto eligendi non, omnis nihil. Facilis, doloremque illum. Fugit optio laborum minus debitis natus illo perspiciatis corporis voluptatum rerum laboriosam.
-
----
-
 ### Ordered List
 
 1. List item
@@ -85,53 +91,163 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam nihil enim maxime 
 
 ### Code and Syntax Highlighting
 
-This is an `Inline code` sample.
+#### HTML
 
-```javascript
-var s = "JavaScript syntax highlighting";
-alert(s);
-```
-
-```python
-s = "Python syntax highlighting"
-print s
-```
-
----
-
-### Blockquote
-
-> This is a blockquote example.
+<Code language="html">
+{`<ul>
+  <li class="nav-item">
+    <a class="nav-link" href="/">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="about/">About</a>
+  </li>
+</ul>`}
+</Code>
 
 ---
 
-### Inline HTML
+#### CSS
 
-You can also use raw HTML in your Markdown, and it'll mostly work pretty well.
-
-<dl>
-  <dt>Definition list</dt>
-  <dd>Is something people use sometimes.</dd>
-
-  <dt>Markdown in HTML</dt>
-  <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
-</dl>
+<Code language="css">
+{`img {
+  vertical-align: middle;
+  border: 0;
+  max-width: 100%;
+  height: auto;
+}`}
+</Code>
 
 ---
 
-### Tables
+#### JavaScript
 
-| Tables        |      Are      |  Cool |
-| ------------- | :-----------: | ----: |
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      |   centered    |   $12 |
-| zebra stripes |   are neat    |    $1 |
+<Code language="javascript">
+{`window.addEventListener("load", (e) => {
+  document.querySelector(".preloader").style.display = "none";
+})`}
+</Code>
 
-There must be at least 3 dashes separating each header cell.
-The outer pipes (|) are optional, and you don't need to make the
-raw Markdown line up prettily. You can also use inline Markdown.
+---
 
-| Markdown | Less      | Pretty     |
-| -------- | --------- | ---------- |
-| _Still_  | `renders` | **nicely** |
-| 1        | 2         | 3          |
+### Button
+
+<Button href="#" type="solid">Button</Button>
+
+---
+
+### Quote
+
+> Did you come here for something in particular or just general Riker-bashing? And blowing into maximum warp speed, you appeared for an instant to be in two places at once.
+
+---
+
+### Notice
+
+<Notice type="note">
+  This is a simple note.
+</Notice>
+
+<Notice type="tip">
+  This is a simple note.
+</Notice>
+
+<Notice type="info">
+  This is a simple note.
+</Notice>
+
+<Notice type="warning">
+  This is a simple note.
+</Notice>
+
+---
+
+<Tabs>
+
+<Tab name="Tab 1">
+
+#### Did you come here for something in particular?
+
+Did you come here for something in particular or just general Riker-bashing? And blowing into maximum warp speed, you appeared for an instant to be in two places at once. We have a saboteur aboard. We know you’re dealing in stolen ore. But I wanna talk about the assassination attempt on Lieutenant Worf.
+</Tab>
+
+<Tab name="Tab 2">
+
+#### I wanna talk about the assassination attempt
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+</Tab>
+
+<Tab name="Tab 3">
+
+#### We know you’re dealing in stolen ore
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
+</Tab>
+
+</Tabs>
+
+---
+
+### Table
+
+| #   |    First     |     Last     |       Handle |
+| :-- | :----------: | :----------: | -----------: |
+| 1   | Row:1 Cell:1 | Row:1 Cell:2 | Row:1 Cell:3 |
+| 2   | Row:2 Cell:1 | Row:2 Cell:2 | Row:2 Cell:3 |
+| 3   | Row:3 Cell:1 | Row:3 Cell:2 | Row:3 Cell:3 |
+
+---
+
+### Collapse
+
+<Accordion title="Why should you need to do this?">
+
+- This is a thing.
+- This is a thing.
+- This is a thing.
+- This is a thing.
+- This is a thing.
+
+</Accordion>
+
+<Accordion title="How can I adjust Horizontal centering">
+
+- This is a thing.
+- This is a thing.
+- This is a thing.
+- This is a thing.
+- This is a thing.
+
+</Accordion>
+
+<Accordion title="Should you use Negative margin?">
+
+- This is a thing.
+- This is a thing.
+- This is a thing.
+- This is a thing.
+- This is a thing.
+
+</Accordion>
+
+---
+
+### Image
+
+![image](/images/post/post-1.png)
+
+---
+
+### Youtube video
+
+<Youtube id="ZEe-IFezQok" title="Play:Youtube"/>
+
+---
+
+### Custom video
+
+<Video width="100%" src="https://joy1.videvo.net/videvo_files/video/free/video0467/large_watermarked/_import_61516692993d77.04238324_preview.mp4" />

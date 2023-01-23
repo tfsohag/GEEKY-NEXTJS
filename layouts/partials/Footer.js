@@ -12,8 +12,14 @@ const Footer = () => {
   return (
     <footer className="section relative pt-[70px] pb-[30px]">
       <ImageFallback
-        className="-z-[1] object-cover object-left md:object-top"
+        className="-z-[1] object-cover object-left dark:hidden md:object-top"
         src="/images/footer-bg-shape.svg"
+        alt=""
+        fill={true}
+      />
+      <ImageFallback
+        className="-z-[1] hidden object-cover object-left dark:block md:object-top"
+        src="/images/footer-bg-shape-dark.svg"
         alt=""
         fill={true}
       />
@@ -21,7 +27,7 @@ const Footer = () => {
         <div className="mb-6 inline-flex">
           <Logo />
         </div>
-        {markdownify(footer_content, "p", "max-w-[638px] mx-auto text-light")}
+        {markdownify(footer_content, "p", "max-w-[638px] mx-auto")}
 
         {/* footer menu */}
         <ul className="mb-12 mt-6 space-x-4">
@@ -29,7 +35,7 @@ const Footer = () => {
             <li className="inline-block" key={menu.name}>
               <Link
                 href={menu.url}
-                className="p-2 font-bold text-dark hover:text-primary lg:p-4"
+                className="p-2 font-bold  hover:text-primary  lg:p-4"
               >
                 {menu.name}
               </Link>
@@ -41,7 +47,7 @@ const Footer = () => {
           <Social source={social} className="socials mb-12 justify-center" />
         </div>
         {/* copyright */}
-        {markdownify(copyright, "p", "text-light")}
+        {markdownify(copyright, "p")}
       </div>
     </footer>
   );

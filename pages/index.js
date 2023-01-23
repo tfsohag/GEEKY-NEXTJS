@@ -9,6 +9,7 @@ import { sortByDate } from "@lib/utils/sortFunctions";
 import { markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
 import bannerShape from "../public/images/banner-bg-shape.svg";
+import bannerShapeDark from "../public/images/banner-bg-shape-dark.svg";
 import Post from "@layouts/partials/Post";
 import { getTaxonomy } from "@lib/taxonomyParser";
 const { blog_folder, summary_length, promotionImage } = config.settings;
@@ -26,8 +27,14 @@ const Home = ({ banner, posts, featured, categories }) => {
       {/* Banner */}
       <section className="section banner relative pb-0">
         <ImageFallback
-          className="absolute bottom-0 left-0 z-[-1] w-full"
+          className="absolute bottom-0 left-0 z-[-1] w-full dark:hidden"
           src={bannerShape}
+          alt="banner-shape"
+          priority
+        />
+        <ImageFallback
+          className="absolute bottom-0 left-0 z-[-1] hidden w-full dark:block"
+          src={bannerShapeDark}
           alt="banner-shape"
           priority
         />
@@ -66,18 +73,19 @@ const Home = ({ banner, posts, featured, categories }) => {
           <div className="row mt-11 items-start">
             <div className="lg:col-8">
               {/* Featured posts */}
-              <div className="rounded border p-6">
+              <div className="rounded border border-border p-6 dark:border-darkmode-border">
                 <div className="row">
                   <div className="lg:col-6">
                     <Post post={featuredPosts[0]} />
                   </div>
-                  <div className="scrollbar-w-[10px] mt-8 max-h-[480px] scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-border lg:mt-0 lg:col-6">
+                  <div className="scrollbar-w-[10px] mt-8 max-h-[480px] scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-border dark:scrollbar-track-gray-800 dark:scrollbar-thumb-darkmode-theme-dark lg:mt-0 lg:col-6">
                     {featuredPosts
                       .slice(1, featuredPosts.length)
                       .map((post, i, arr) => (
                         <div
                           className={`mb-6 flex items-center pb-6 ${
-                            i !== arr.length - 1 && "border-b"
+                            i !== arr.length - 1 &&
+                            "border-b border-border dark:border-darkmode-border"
                           }`}
                           key={`key-${i}`}
                         >
@@ -116,7 +124,7 @@ const Home = ({ banner, posts, featured, categories }) => {
                 />
               </div>
               {/* Recent Posts */}
-              <div className="mb-16 rounded border p-6">
+              <div className="mb-16 rounded border border-border p-6 dark:border-darkmode-border">
                 <div className="row -mt-16">
                   {sortPostByDate.slice(0, showPosts).map((post) => (
                     <div className="mt-16 lg:col-6" key={post.slug}>

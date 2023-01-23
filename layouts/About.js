@@ -30,7 +30,7 @@ const About = ({ data }) => {
 
         <div className="row mt-16 text-left lg:flex-nowrap">
           <div className="lg:col-6 ">
-            <div className="rounded border border-border p-6 ">
+            <div className="rounded border border-border p-6 dark:border-darkmode-border ">
               {markdownify(education.title, "h2", "h3 section-title mb-12")}
               <div className="row">
                 {education.degrees.map((degree, index) => (
@@ -45,12 +45,12 @@ const About = ({ data }) => {
             </div>
           </div>
           <div className="experience mt-10 lg:mt-0 lg:col-6">
-            <div className="rounded border border-border p-6 ">
+            <div className="rounded border border-border p-6 dark:border-darkmode-border ">
               {markdownify(experience.title, "h2", "h3 section-title mb-12")}
               <ul className="row">
                 {experience?.list?.map((item, index) => (
                   <li
-                    className="mb-5 text-lg font-bold text-dark lg:col-6"
+                    className="mb-5 text-lg font-bold lg:col-6"
                     key={"experience-" + index}
                   >
                     {item}

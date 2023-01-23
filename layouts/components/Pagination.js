@@ -26,7 +26,7 @@ const Pagination = ({ section, currentPage, totalPages }) => {
                   ? `${section ? "/" + section : "/"}`
                   : `${section ? "/" + section : ""}/page/${currentPage - 1}`
               }
-              className="flex items-center rounded-full px-2 py-2 text-lg font-bold leading-none text-text"
+              className="flex items-center rounded-full px-2 py-2 text-lg font-bold leading-none"
             >
               <>
                 <svg
@@ -41,11 +41,11 @@ const Pagination = ({ section, currentPage, totalPages }) => {
                     fill="#000000"
                   />
                 </svg>
-                <span className="ml-3 text-lg text-dark">Previous</span>
+                <span className="ml-3 text-lg ">Previous</span>
               </>
             </Link>
           ) : (
-            <span className="flex items-center rounded-full px-2 py-2 text-lg font-bold text-dark">
+            <span className="flex items-center rounded-full px-2 py-2 text-lg font-bold ">
               <>
                 <svg
                   width="24px"
@@ -59,7 +59,7 @@ const Pagination = ({ section, currentPage, totalPages }) => {
                     fill="#000000"
                   />
                 </svg>
-                <span className="ml-3 text-lg text-dark">Previous</span>
+                <span className="ml-3 text-lg">Previous</span>
               </>
             </span>
           )}
@@ -83,7 +83,7 @@ const Pagination = ({ section, currentPage, totalPages }) => {
                   }
                   passHref
                   aria-current="page"
-                  className={`inline-flex h-[38px] w-[38px] items-center justify-center rounded-full px-4 py-2 text-lg font-bold leading-none text-dark`}
+                  className={`inline-flex h-[38px] w-[38px] items-center justify-center rounded-full px-4 py-2 text-lg font-bold leading-none`}
                 >
                   {pagination}
                 </Link>
@@ -95,10 +95,10 @@ const Pagination = ({ section, currentPage, totalPages }) => {
           {hasNextPage ? (
             <Link
               href={`${section ? "/" + section : ""}/page/${currentPage + 1}`}
-              className="ml-4 flex items-center rounded-full px-2 py-2 font-bold leading-none text-dark"
+              className="ml-4 flex items-center rounded-full px-2 py-2 font-bold leading-none"
             >
               <>
-                <span className="mr-3 text-dark">Next</span>
+                <span className="mr-3">Next</span>
                 <svg
                   width="24px"
                   height="24px"
@@ -114,9 +114,9 @@ const Pagination = ({ section, currentPage, totalPages }) => {
               </>
             </Link>
           ) : (
-            <span className="ml-4 flex items-center rounded-full px-2 py-2 font-bold text-dark">
+            <span className="ml-4 flex items-center rounded-full px-2 py-2 font-bold">
               <>
-                <span className="mr-3  text-dark">Next</span>
+                <span className="mr-3">Next</span>
                 <svg
                   width="24px"
                   height="24px"

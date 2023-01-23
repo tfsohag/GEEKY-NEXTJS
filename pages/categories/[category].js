@@ -21,7 +21,7 @@ const Category = ({ category, posts, authors, categories }) => {
           </h1>
           <div className="row">
             <div className="lg:col-8">
-              <div className="row rounded border p-6">
+              <div className="row rounded border border-border p-6 dark:border-darkmode-border">
                 {posts.map((post, i) => (
                   <div key={`key-${i}`} className="col-12 mb-8 sm:col-6">
                     <Post post={post} authors={authors} />
