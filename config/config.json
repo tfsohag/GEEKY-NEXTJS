@@ -15,7 +15,16 @@
     "pagination": 6,
     "summary_length": 200,
     "blog_folder": "posts",
-    "promotionImage": "/images/promotion.png"
+    "promotionImage": "/images/promotion.png",
+    "disqus": {
+      "shortName": "your-site-shortname",
+      "setting":{
+        "url": "http://localhost:3000",
+        "identifier": "article-id",
+        "title": "Title of Your Article"
+      },
+      "enable": false
+    }
   },
 
   "widget": {

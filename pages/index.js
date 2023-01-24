@@ -14,7 +14,7 @@ import Post from "@layouts/partials/Post";
 import { getTaxonomy } from "@lib/taxonomyParser";
 const { blog_folder, summary_length, promotionImage } = config.settings;
 
-const Home = ({ banner, posts, featured, categories }) => {
+const Home = ({ banner, posts, featured, categories, recent }) => {
   // define state
   const sortPostByDate = sortByDate(posts);
   const featuredPosts = sortPostByDate.filter(
@@ -66,7 +66,7 @@ const Home = ({ banner, posts, featured, categories }) => {
       </section>
 
       {/* Home main */}
-      <section className="section">
+      <section className="section mt-16 ">
         <div className="container">
           {markdownify(featured.title, "h2", "h2 section-title")}
 
@@ -107,7 +107,19 @@ const Home = ({ banner, posts, featured, categories }) => {
                                 {post.frontmatter.title}
                               </Link>
                             </h3>
-                            <p>{dateFormat(post.frontmatter.date)}</p>
+                            <p className="inline-flex items-center font-bold">
+                              <svg
+                                className="mr-1"
+                                fill="currentColor"
+                                width="14px"
+                                height="14px"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path d="M3,22H21a1,1,0,0,0,1-1V6a1,1,0,0,0-1-1H17V3a1,1,0,0,0-2,0V5H9V3A1,1,0,0,0,7,3V5H3A1,1,0,0,0,2,6V21A1,1,0,0,0,3,22ZM4,7H20v3H4Zm0,5H20v8H4Z" />
+                              </svg>
+                              {dateFormat(post.frontmatter.date)}
+                            </p>
                           </div>
                         </div>
                       ))}
@@ -124,7 +136,8 @@ const Home = ({ banner, posts, featured, categories }) => {
                 />
               </div>
               {/* Recent Posts */}
-              <div className="mb-16 rounded border border-border p-6 dark:border-darkmode-border">
+              {markdownify(recent.title, "h2", "h2 section-title mt-16")}
+              <div className="mb-16 mt-12 rounded border border-border p-6 dark:border-darkmode-border">
                 <div className="row -mt-16">
                   {sortPostByDate.slice(0, showPosts).map((post) => (
                     <div className="mt-16 lg:col-6" key={post.slug}>
@@ -153,7 +166,7 @@ export default Home;
 export const getStaticProps = async () => {
   const homepage = await getListPage("content/_index.md");
   const { frontmatter } = homepage;
-  const { banner, featured } = frontmatter;
+  const { banner, featured, recent } = frontmatter;
   const posts = getSinglePage(`content/${blog_folder}`);
   const categories = getTaxonomy(`content/${blog_folder}`, "categories");
 
@@ -172,6 +185,7 @@ export const getStaticProps = async () => {
       banner: banner,
       posts: posts,
       featured,
+      recent,
       categories: categoriesWithPostsCount,
     },
   };

@@ -11,4 +11,7 @@ banner:
 featured:
   title: Featured Post
 
+recent:
+  title: Featured Post
+
 ---

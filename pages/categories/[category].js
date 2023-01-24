@@ -11,17 +11,17 @@ const { blog_folder } = config.settings;
 const Category = ({ category, posts, authors, categories }) => {
   return (
     <Base title={category}>
-      <div className="section">
+      <div className="section mt-16">
         <div className="container">
-          <h1 className="h3 mb-8">
+          <h1 className="h2 mb-12">
             Showing posts from
-            <span className="section-title ml-1 capitalize text-primary">
+            <span className="section-title ml-1 inline-block capitalize">
               {category.replace("-", " ")}
             </span>
           </h1>
           <div className="row">
             <div className="lg:col-8">
-              <div className="row rounded border border-border p-6 dark:border-darkmode-border">
+              <div className="row rounded border border-border p-4 px-3 dark:border-darkmode-border lg:p-6">
                 {posts.map((post, i) => (
                   <div key={`key-${i}`} className="col-12 mb-8 sm:col-6">
                     <Post post={post} authors={authors} />

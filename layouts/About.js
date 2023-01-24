@@ -8,7 +8,7 @@ const About = ({ data }) => {
   const { title, image, education, experience } = frontmatter;
 
   return (
-    <section className="section">
+    <section className="section mt-16">
       <div className="container text-center">
         {image && (
           <div className="mb-8">
@@ -22,16 +22,16 @@ const About = ({ data }) => {
             />
           </div>
         )}
-        {markdownify(title, "h1", "h1 text-left lg:text-[55px]")}
+        {markdownify(title, "h1", "h1 text-left lg:text-[55px] mt-12")}
 
         <div className="content text-left">
           <MDXRemote {...mdxContent} components={shortcodes} />
         </div>
 
-        <div className="row mt-16 text-left lg:flex-nowrap">
+        <div className="row mt-24 text-left lg:flex-nowrap">
           <div className="lg:col-6 ">
             <div className="rounded border border-border p-6 dark:border-darkmode-border ">
-              {markdownify(education.title, "h2", "h3 section-title mb-12")}
+              {markdownify(education.title, "h2", "section-title mb-12")}
               <div className="row">
                 {education.degrees.map((degree, index) => (
                   <div className="mb-7 md:col-6" key={"degree-" + index}>
@@ -46,11 +46,11 @@ const About = ({ data }) => {
           </div>
           <div className="experience mt-10 lg:mt-0 lg:col-6">
             <div className="rounded border border-border p-6 dark:border-darkmode-border ">
-              {markdownify(experience.title, "h2", "h3 section-title mb-12")}
+              {markdownify(experience.title, "h2", "section-title mb-12")}
               <ul className="row">
                 {experience?.list?.map((item, index) => (
                   <li
-                    className="mb-5 text-lg font-bold lg:col-6"
+                    className="mb-5 text-lg font-bold text-dark dark:text-darkmode-light lg:col-6"
                     key={"experience-" + index}
                   >
                     {item}

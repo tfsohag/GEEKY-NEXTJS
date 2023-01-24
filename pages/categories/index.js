@@ -4,6 +4,7 @@ import { getTaxonomy } from "@lib/taxonomyParser";
 import { humanize, markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
 const { blog_folder } = config.settings;
+import { getSinglePage } from "@lib/contentParser";
 
 const Categories = ({ categories }) => {
   return (
@@ -14,7 +15,7 @@ const Categories = ({ categories }) => {
           "h1",
           "h2 mb-16 bg-theme-light dark:bg-darkmode-theme-dark py-12 text-center lg:text-[55px]"
         )}
-        <div className="container text-center">
+        <div className="container pt-12 text-center">
           <ul className="row">
             {categories.map((category, i) => (
               <li
@@ -22,8 +23,8 @@ const Categories = ({ categories }) => {
                 className="mt-4 block lg:col-4 xl:col-3"
               >
                 <Link
-                  href={`/categories/${category}`}
-                  className="bg-theme-light flex w-full items-center justify-center rounded-lg px-4 py-3.5 font-bold transition hover:bg-primary hover:text-white dark:bg-darkmode-theme-dark  dark:hover:bg-primary dark:hover:text-white"
+                  href={`/categories/${category.name}`}
+                  className="flex w-full items-center justify-center rounded-lg bg-theme-light px-4 py-4 font-bold text-dark transition hover:bg-primary hover:text-white  dark:bg-darkmode-theme-dark dark:text-darkmode-light dark:hover:bg-primary dark:hover:text-white"
                 >
                   <svg
                     className="mr-2"
@@ -38,7 +39,7 @@ const Categories = ({ categories }) => {
                       fill="currentColor"
                     />
                   </svg>
-                  {humanize(category)}
+                  {humanize(category.name)} ({category.posts})
                 </Link>
               </li>
             ))}
@@ -52,11 +53,20 @@ const Categories = ({ categories }) => {
 export default Categories;
 
 export const getStaticProps = () => {
+  const posts = getSinglePage(`content/${blog_folder}`);
   const categories = getTaxonomy(`content/${blog_folder}`, "categories");
-
+  const categoriesWithPostsCount = categories.map((category) => {
+    const filteredPosts = posts.filter((post) =>
+      post.frontmatter.categories.includes(category)
+    );
+    return {
+      name: category,
+      posts: filteredPosts.length,
+    };
+  });
   return {
     props: {
-      categories: categories,
+      categories: categoriesWithPostsCount,
     },
   };
 };

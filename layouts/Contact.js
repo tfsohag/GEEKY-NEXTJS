@@ -6,20 +6,20 @@ const Contact = ({ data }) => {
   const { title, bg_img, addresses } = frontmatter;
 
   return (
-    <section className="section relative">
-      <ImageFallback
-        className="-z-[1] object-cover dark:invisible"
-        src={bg_img}
-        fill="true"
-        alt=""
-      />
+    <section className="section  lg:mt-16">
       <div className="container">
-        <div className="row">
+        <div className="row relative pb-16">
+          <ImageFallback
+            className="-z-[1] object-cover object-top dark:invisible"
+            src={bg_img}
+            fill="true"
+            alt=""
+          />
           <div className="lg:col-6">
             {markdownify(
               title,
               "h1",
-              "h1 my-10 lg:my-11 pt-11 text-center lg:text-[64px]"
+              "h1 my-10 lg:my-11 lg:pt-11 text-center lg:text-left lg:text-[64px]"
             )}
           </div>
           <div className="rounded border border-border p-6 dark:border-darkmode-border lg:col-6">
@@ -83,6 +83,7 @@ const Contact = ({ data }) => {
                   className="form-input w-full"
                   name="subject"
                   type="text"
+                  placeholder="Blog advertisement"
                   required
                 />
               </div>
@@ -99,11 +100,11 @@ const Contact = ({ data }) => {
                   rows="7"
                 />
               </div>
-              <button className="btn btn-primary">Submit Now</button>
+              <button className="btn btn-primary">Send Now</button>
             </form>
           </div>
         </div>
-        <div className="row mt-16">
+        <div className="row">
           {addresses.map((address, index) => (
             <div key={"address-" + index} className=" md:col-6 lg:col-4">
               <div

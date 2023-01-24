@@ -19,8 +19,14 @@ const Sidebar = ({ posts, categories }) => {
   const [showRecent, setShowRecent] = useState(true);
 
   return (
-    <aside className="mt-12 px-6 lg:mt-0 lg:col-4">
-      <div className="rounded border border-border p-6 dark:border-darkmode-border">
+    <aside className="mt-12 px-0 lg:mt-0 lg:px-6 lg:col-4">
+      <div className="relative rounded border border-border p-6 dark:border-darkmode-border">
+        <ImageFallback
+          className="-z-[1] dark:invisible"
+          src="/images/map.png"
+          fill={true}
+          alt=""
+        />
         <ImageFallback
           className="mx-auto"
           src={widget.logo}
@@ -41,9 +47,9 @@ const Sidebar = ({ posts, categories }) => {
         <ul>
           {categories.map((category, i) => (
             <li
-              className={`relative mb-2 flex items-center justify-between pl-6 text-[16px] font-bold capitalize ${
+              className={`relative mb-2 flex items-center justify-between pl-6 text-[16px] font-bold capitalize text-dark dark:text-darkmode-light ${
                 i !== categories.length - 1 &&
-                "border-b border-border dark:border-darkmode-border"
+                "border-b border-border  dark:border-darkmode-border"
               }`}
               key={i}
             >
@@ -176,7 +182,7 @@ const Sidebar = ({ posts, categories }) => {
         <form action="#" className="py-6">
           <fieldset className="relative">
             <input
-              className="newsletter-input bg-theme-light form-input h-12 w-full rounded-3xl border-none px-5 py-3 pr-12 text-dark placeholder:text-xs dark:bg-darkmode-theme-dark"
+              className="newsletter-input form-input h-12 w-full rounded-3xl border-none bg-theme-light px-5 py-3 pr-12 text-dark placeholder:text-xs dark:bg-darkmode-theme-dark"
               type="text"
               placeholder="Type And Hit Enter"
             />
@@ -199,11 +205,12 @@ const Sidebar = ({ posts, categories }) => {
               ></path>
             </svg>
           </fieldset>
-          <input
+          <button
             className="d-block  btn btn-primary mt-4 w-full"
             type="submit"
-            value="Sign In"
-          />
+          >
+            Sign In
+          </button>
         </form>
         <p className="text-xs">
           By Singing Up, You Agree To

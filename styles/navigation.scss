@@ -4,7 +4,7 @@ body.menu-open {
 
 
 .header {
-  @apply top-0 z-50 bg-body dark:bg-darkmode-body py-8 border-b dark:border-darkmode-border;
+  @apply top-0 z-50 bg-body dark:bg-darkmode-body py-[33px] border-b dark:border-darkmode-border;
 }
 
 // navbar items
@@ -37,7 +37,7 @@ body.menu-open {
 
 
 .nav-link {
-  @apply px-6 py-2.5 text-[13.5px] capitalize font-secondary font-semibold text-dark dark:text-darkmode-light  transition hover:text-white md:px-5 md:py-3 hover:bg-primary rounded-[30px] text-left lg:text-center;
+  @apply px-6 py-2.5 text-[13.5px] capitalize font-secondary text-dark dark:text-darkmode-light  transition hover:text-white md:px-5 md:py-3 hover:bg-primary rounded-[30px] text-left lg:text-center;
 
   &.active {
     @apply bg-primary text-white;
